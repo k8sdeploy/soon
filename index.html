@@ -20,6 +20,13 @@
       <!-- JavaScript -->
       <script src="./js/jquery-1.5.1.min.js"></script> <!-- Load jQuery library -->
       <script src="./js/modernizr-1.7.min.js"></script> <!-- Load Modernizr -->
+      <script src="./js/jquery.countdown.min.js"></script> <!-- Load jQuery Countdown library -->
+      <script src="./js/script.js"></script> <!-- Load custom scripts -->
+      <script>
+        $(function() {
+          getSoon("K8sDeploy.dev")
+        });
+      </script>
   </head>
   <body>
     <div id="pattern">
@@ -33,37 +40,22 @@
         <div id="main_page">
           <!-- Header -->
           <header>
-            <h1>K8sDeploy Coming Soon</h1> <!-- Set the page title -->
+            <h1 id="pageTitle"></h1> <!-- Set the page title -->
           </header>
 
           <!-- Additional content -->
           <div id="content"> &nbsp;
             <!-- Countdown -->
-            <script src="./js/jquery.countdown.min.js"></script> <!-- Load jQuery Countdown library -->
-            <script>
-              $(function() {
-                let launchTime = new Date(2023, 0, 1, 23, 59); // Set launch: [year], [month], [day], [hour]...
-                $("#countdown").countdown({
-                  until: launchTime,
-                  format: "odHMS"
-                });
-              });
-            </script>
+
             <section class="countdown">
               <div id="countdown"></div>
             </section>
             <!-- Countdown end -->
 
-
             <!-- Progress -->
-            <script>
-              $(function() {
-                $("#progressbar").animate({width: $(".progress h2").text()}, 2000);
-              });
-            </script>
             <section class="progress">
-              <div id="progressbar" style="width: 85%;"></div>
-              <h2>85%</h2> <!-- Set your progress, must be percentage -->
+              <div id="progressbar"></div>
+              <h2 id="progressAmount">0%</h2> <!-- Set your progress, must be percentage -->
             </section>
             <!-- Progress end -->
 
@@ -71,8 +63,7 @@
             <!-- Short description -->
             <section class="description">
               <div class="description_top"></div>
-              <div class="description_content">
-                <p>K8sDeploy the easy deployment system that runs on x86 and ARM.</p>
+              <div class="description_content" id="fullDesc">
               </div>
               <div class="description_bottom"></div>
             </section>
