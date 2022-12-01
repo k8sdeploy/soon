@@ -13,11 +13,33 @@ spec:
   ingressClassName: nginx
   tls:
     - hosts:
+        - k8sdeploy.it
         - k8sdeploy.dev
+        - www.k8sdeploy.it
         - www.k8sdeploy.dev
-      secretName: k8sdeploy-soon
+      secretName: k8sdeploy-soon-tls
   rules:
+    - host: k8sdeploy.it
+      http:
+        paths:
+          - backend:
+              service:
+                name: soon
+                port:
+                  number: 80
+            path: /
+            pathType: Prefix
     - host: k8sdeploy.dev
+      http:
+        paths:
+            - backend:
+                service:
+                  name: soon
+                  port:
+                    number: 80
+              path: /
+              pathType: Prefix
+    - host: www.k8sdeploy.it
       http:
         paths:
           - backend:
